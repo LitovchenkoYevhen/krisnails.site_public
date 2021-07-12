@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load services_tags %}
+
+{% block bredcramb_area %}
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2>Портфолио</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'services:home' %}"><i class="icon_house_alt"></i>На главную</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Портфолио</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
+{% endblock %} <!-- Заголовок -->
+
+{% block portfolio %}
+    {% get_portfolio %}
+{% endblock %}
+
+{% block border %}
+        <!-- Border -->
+    <div class="container">
+        <div class="border-top"></div>
+    </div>
+{% endblock %}

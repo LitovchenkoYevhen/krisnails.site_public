@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load services_tags %}
+
+{% block about %} <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2>Обо Мне</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'services:home' %}"><i class="icon_house_alt"></i>На главную</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Обо Мне</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- Breadcrumb Area End -->
+
+    <!-- Akame About Area Start -->
+    <section class="akame--about--area">
+        <div class="container">
+            <div class="row">
+                <!-- Section Heading -->
+                <div class="col-12 col-lg-6">
+                    <div class="section-heading text-right mb-80 pr-5 pt-3">
+{#                        <p>New York • Since 2004</p>#}
+                        <h2>Моя маленькая история</h2>
+                        <span>История</span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="about--us--content mb-80">
+                        <p>{{ master.about }}</p>
+                        <h4>KrisNails</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ {% endblock %}    <!-- Akame About Area End -->
+
+
+{% block video %}
+       <!-- Akame Video Area Start -->
+    <div class="akame--video--area">
+        <div class="container">
+
+            <!-- Video Content Area -->
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="video-content-area mb-80 col-10 col-lg-7 col-sm-7 ">
+                        <img src="{% static 'img/about/about-01.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <!-- Single Cool Facts Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-facts-area text-center mb-80 wow fadeInUp" data-wow-delay="200ms">
+                        <span>Работа</span>
+                        <h2 class="counter">{{ projects_done|add:'68' }}</h2>
+                        <p>Количество работ</p>
+                    </div>
+                </div>
+
+                <!-- Single Cool Facts Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-facts-area text-center mb-80 wow fadeInUp" data-wow-delay="400ms">
+                        <span>Клиент</span>
+                        <h2 class="counter">{{ clients|add:'30' }}</h2>
+                        <p>Счастливых клиентов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akame Video Area End -->
+{% endblock %}
+
+{% block quote %}
+        <!-- Testimonial Area Start -->
+    <section class="testimonial-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="testimonial-slides owl-carousel">
+
+                        <!-- Single Testimonial Slide -->
+                        {% for quote in quotes %}
+                        <div class="single-testimonial-slide">
+                            <img src="{% static 'img/core-img/quote.png' %}" alt="">
+                            <p>{{ quote.content }}</p>
+                            <div class="ratings-name d-flex align-items-center justify-content-center">
+                                <div class="ratings mr-3">
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                </div>
+                                <h5>{{ quote.speaker }}</h5>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial Area End -->
+
+
+{% endblock %}
+
+
+{% block welcome_area %}
+{% endblock %}
+
+
+{% block akme_about_area %}
+
+{% endblock %}
+
+{% block services %}
+{% endblock %}
+
+{% block why_choose_us_area %}
+
+{% endblock %}
+
+{% block bredcramb_area %}
+
+{% endblock %} <!-- Заголовок услуг -->
+
+{% block portfolio %}
+
+{% endblock %}
+
+{% block education %}
+    {% get_education %}
+{% endblock %}
+
+
+{% block border %}
+
+{% endblock %}
+
+
+

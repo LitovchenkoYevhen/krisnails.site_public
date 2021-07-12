@@ -1,0 +1,58 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+ <section class="akame-contact-area bg-gray section-padding-80">
+        <div class="container">
+            <div class="row">
+                <!-- Section Heading -->
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Оставьте свое сообщение</h2>
+                        <p>Я свяжусь с вами при первой возможности.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- Form -->
+
+                    <form action="{% url 'services:contact' %}" method="POST" class="akame-contact-form border-0 p-0">
+                        {% csrf_token %}
+                        {{ form.non_field.errors }}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input type="text" name="name" class="form-control mb-30" placeholder="Ваше имя">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="tel" name="telephone" class="form-control mb-30" placeholder="Ваш номер телефона">
+                            </div>
+                            <div class="col-12">
+                                <input type="email" name="email" class="form-control mb-30" placeholder="Ваш E-mail">
+                            </div>
+{#                            <div class="col-12">#}
+{#                                <input type="date"  name="email" class="form-control mb-30" placeholder="MM/DD/YYYY" onfocus="(this.type='date')">#}
+{#                            </div>#}
+                            <div class="col-12">
+                                <textarea name="content" required class="form-control mb-30" placeholder="Ваше сообщение..."></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn akame-btn btn-3 mt-15 active">Отправить сообщение</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,48 @@
+ <!-- Portfolio Area Start -->
+    <section class="akame-portfolio section-padding-0-80 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="portfolio-menu text-center mb-50">
+                        <button class="btn active" data-filter="*">Все фото</button>
+                        {% for tag in tags %}
+                            <button class="btn" data-filter=".{{ tag.title }}">{{ tag.title }}</button>
+                        {% endfor %}
+                        <!--   <button class="btn" data-filter=".coloring">Coloring</button>
+                         <button class="btn" data-filter=".barber">Barber</button>
+                         <button class="btn" data-filter=".shaving">Shaving</button>
+                         <button class="btn" data-filter=".hairstyle">Hairstyle</button>
+                         <button class="btn" data-filter=".massage">Massages</button>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row akame-portfolio-area">
+                {% for item in visit_list %}
+
+                    <!-- Single Portfolio Item -->
+                    <div class="col-12 col-sm-6 col-lg-4 akame-portfolio-item nails mb-30 wow fadeInUp
+                    {% for tag in item.tags.all %}
+                        {{ tag }}
+                    {% endfor %}"
+                         data-wow-delay="200ms">
+                        <div class="akame-portfolio-single-item">
+                            <img src="{{ item.photo_after.url }}" alt="">
+
+                            <!-- Overlay Content
+                            <div class="overlay-content d-flex align-items-center justify-content-center">
+                                <div class="overlay-text text-center">
+                                    <h4>Hairstyle</h4>
+                                    <p>Consectetur adipisicing elit sed doe</p>
+                                </div>
+                            </div>-->
+
+                            <!-- Thumbnail Zoom -->
+                            <a href="{{ item.photo_after.url }}" class="thumbnail-zoom"><i class="icon_zoom-in_alt"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio Area End -->

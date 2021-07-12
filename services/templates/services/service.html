@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block my_prices %}
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2>Стоимость услуг</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'services:home' %}"><i class="icon_house_alt"></i>На главную</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Услуги</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
+{% endblock %} <!-- Заголовок услуг -->
+
+{% block services %}
+ <!-- Service Area Start -->
+    <section class="akame-service-area">
+
+        <!-- Single Service Item -->
+        <div class="single--service--item d-flex flex-wrap align-items-center">
+            <!-- Service Content -->
+            <div class="service-content">
+                <div class="service-text">
+                    <h2>Маникюр</h2>
+                    {% for service in manicure %}
+                    <p><span>{{ service.title }}</span> <span>{{ service.price }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Service Thumbnail -->
+            <div class="service-thumbnail bg-img jarallax" style="background-image: url('{% static "img/services/service-04.jpg" %}');"></div>
+        </div>
+
+        <!-- Single Service Item -->
+        <div class="single--service--item odd-item d-flex flex-wrap align-items-center">
+            <!-- Service Thumbnail -->
+            <div class="service-thumbnail bg-img jarallax" style="background-image: url('{% static "img/services/service-03.jpg" %}');"></div>
+
+            <!-- Service Content -->
+            <div class="service-content">
+                <div class="service-text">
+                    <h2>Покрытие</h2>
+                   {% for service in covering %}
+                    <p><span>{{ service.title }}</span> <span>{{ service.price }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Service Area End -->
+{% endblock %}
+
+{% block bredcramb_area %}
+
+{% endblock %} <!-- Index.html, Portfolio.html -->
+
+
+{% block portfolio %}
+
+{% endblock %}
+
+{% block border %}
+{% endblock %}

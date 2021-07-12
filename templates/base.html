@@ -1,0 +1,173 @@
+{% load static %}
+{% load cache %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Krisnails</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+
+    <!-- /Preloader -->
+    {% include 'inc/_nav.html' %}          <!-- Навигационная панель -->
+
+
+
+{% block about %}
+{% endblock %} <!-- About.html -->
+
+{% block video %}
+{% endblock %} <!-- About.html -->
+
+{% block quote %}
+{% endblock %} <!-- About.html -->
+
+{% block welcome_area %}
+{% endblock %} <!-- Index.html -->
+{% block my_services %}
+{% endblock %} <!-- Index.html -->
+
+{% block bredcramp_service %}
+{% endblock %} <!-- Service.html -->
+
+{% block my_prices %}
+{% endblock %} <!-- Service.html -->
+{% block services %}
+{% endblock %} <!-- Service.html -->
+
+{% block why_choose_us_area %}
+
+{% endblock %} <!-- Index.html -->
+
+{% block bredcramb_area %}
+
+{% endblock %} <!-- Index.html, Service.html Blog.html-->
+
+{% block blog %}
+{% endblock %} <!-- About.html -->
+
+{% block portfolio %}
+
+{% endblock %} <!-- Index.html, Portfolio.html -->
+
+{% block education %}
+
+{% endblock %} <!-- Index.html, About.html -->
+
+{% block border %}
+
+{% endblock %} <!-- Border -->
+
+{% block contact %}
+
+{% endblock %}
+
+
+
+
+
+<!-- Footer Area Start -->
+<footer class="footer-area section-padding-80-0">
+    <div class="container">
+        <div class="row justify-content-between">
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="single-footer-widget mb-80">
+                    <!-- Footer Logo -->
+                    <a href="#" class="footer-logo">KRISNAILS</a>
+
+                    <p class="mb-30">Буду рада Вам помочь. Надеюсь Вам понравится.</p>
+
+                    <!-- Copywrite Text -->
+                    <div class="copywrite-text">
+                        <p> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                            All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                                aria-hidden="true"></i> by <a
+                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="single-footer-widget mb-80">
+                    <!-- Widget Title -->
+                    <h4 class="widget-title">Пишите в любое время</h4>
+
+                    <!-- Open Times -->
+                    <div class="open-time">
+                        <p>Связаться со мной</p>
+                        <p>Вы можете через:</p>
+                    </div>
+
+                    <!-- Social Info -->
+                    <div class="social-info">
+                        <a href="viber://chat?number=%2B380933398818" target="_blank" class="facebook"><i class="fab fa-viber"></i></a>
+                        <a href="https://telegram.me/K_ris" target="_blank" class="instagram"><i class="fa fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/kris_.nails/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-md-4 col-xl-3">
+                <div class="single-footer-widget mb-80">
+
+                    <!-- Widget Title -->
+                    <h4 class="widget-title">Контакты</h4>
+
+                    <!-- Contact Address -->
+                    <div class="contact-address">
+                        <p>Тел: (+38) 093-339-88-18</p>
+                        <p>E-mail: Kyaremchuk7@gmail.com</p>
+                        <p>Адрес: улица Головатого, 45, Борисполь, Киевская обл.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End -->
+
+<!-- All JS Files -->
+<!-- jQuery -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- Popper -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- All Plugins -->
+<script src="{% static 'js/akame.bundle.js' %}"></script>
+<!-- Active -->
+<script src="{% static 'js/default-assets/active.js' %}"></script>
+<!-- Fontawesome -->
+<script src="https://kit.fontawesome.com/1e9837f060.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

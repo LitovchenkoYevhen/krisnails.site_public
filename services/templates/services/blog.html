@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block bredcramb_area %}
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2>Мой Блог</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'services:home' %}"><i class="icon_house_alt"></i>На главную</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Блог</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
+{% endblock %} <!-- Index.html, Service.html, About.html-->
+
+{% block blog %}
+    <!-- News Area Start -->
+    <section class="akame-news-area section-padding-0-80">
+        <div class="container">
+            <div class="row mx-sm-n4 akame-blog-masonary">
+                {% for post in posts %}
+                <!-- Single Blog Item -->
+                <div class="col-12 col-sm-6 col-lg-4 px-4 akame-blog-masonary-item mb-50 wow fadeInUp" data-wow-delay="200ms">
+                    <!-- Single Post Area -->
+                    <div class="single-post-area">
+                        <div class="post-thumbnail">
+                            <a href="{{ post.get_absolute_url }}"><img src="{{ post.photo.url }}" alt=""></a>
+                        </div>
+                        <div class="post-content">
+                            <a href="{{ post.get_absolute_url }}" class="post-title">{{ post.title }}</a>
+                            <div class="post-meta">
+                                <a href="{{ post.get_absolute_url }}" class="post-date"><i class="icon_clock_alt"></i> {{ post.pub_date }}</a>
+                                <a href="{{ post.get_absolute_url }}" class="post-comments"><i class="icon_search"></i> {{ post.views }}</a>
+                            </div>
+                            <p>{{ post.content|truncatewords:29 }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+{#            <div class="row">#}
+{#                <div class="col-12 text-center">#}
+{#                    <a href="{% url 'services:blog' %}" class="btn akame-btn active mt-30">Показать все</a>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+    </section>
+    <!-- News Area End -->
+
+{% endblock %} <!-- About.html -->
+{% block border %}
+        <!-- Border -->
+    <div class="container">
+        <div class="border-top mt-3"></div>
+    </div>
+
+{% endblock %} <!-- Border -->

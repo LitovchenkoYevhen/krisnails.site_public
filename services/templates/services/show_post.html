@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+ {% block bredcramb_area %}
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2>Мой Блог</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'services:home' %}"><i class="icon_house_alt"></i>На главную</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Мой Блог</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
+{% endblock %} <!-- Index.html, Service.html Blog.html-->
+
+{% block blog %}
+    <!-- Akame Video Area Start -->
+        <div class="akame--video--area">
+            <div class="container">
+                <div class="text-center mb-70">
+                    <h2 >{{ post.title }}</h2>
+                </div>
+                <!-- Video Content Area -->
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+
+                        <div class="video-content-area mb-80 col-12 col-sm-12 col-lg-6 ">
+                            <img src="{{ post.photo.url }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <!-- Single Cool Facts Area -->
+                <div class="col-11 col-sm-6 col-lg-5">
+                    <div class=" text-center mb-80 fadeInUp " data-wow-delay="200ms">
+                        <div class="blog-details-text lh-lg">
+                            <p>{{ post.content }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %} <!-- About.html -->
