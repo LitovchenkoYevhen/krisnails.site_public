@@ -25,17 +25,17 @@ class ClientAdmin(admin.ModelAdmin):
 
 
 class VisitAdmin(admin.ModelAdmin):
-    list_display = ('id', 'client', 'visit_date', 'completed', 'is_published', 'visit_cancel_reason', 'get_photo')
+    list_display = ('id', 'client', 'visit_date', 'completed', 'is_published', 'show_on_main', 'visit_cancel_reason', 'get_photo')
     list_display_links = ('id', 'client', 'visit_date', 'visit_cancel_reason', 'get_photo')
-    list_editable = ('is_published',)
+    list_editable = ('is_published', 'show_on_main',)
     readonly_fields = ('get_photo',)
     save_as = True
-    
+
 
     fieldsets = [
         ('Планирование визита', {'fields': ('client', 'visit_date')}),
         ('Дополнительная информация после визита', {'fields': ('info', 'designs', 'completed', 'visit_cancel_reason', 'photo_before', 'photo_after', 'get_photo')}),
-        ('Портфолио', {'fields': ('is_published', 'tags',)})
+        ('Портфолио', {'fields': ('is_published', 'show_on_main', 'tags',)})
     ]
 
     def get_photo(self, obj):

@@ -8,7 +8,7 @@ from services import views
 
 app_name = 'services'
 urlpatterns = [
-    path('', views.Home.as_view(), name='home'),
+    path('', cache_page(60 * 1)(views.Home.as_view()), name='home'),
     path('service/', views.Services.as_view(), name='service'),
     path('portfolio/', views.Portfolio.as_view(), name='portfolio'),
     path('contact/', views.send_message, name='contact'),

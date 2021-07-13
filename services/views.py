@@ -9,14 +9,16 @@ from .forms import ContactForm
 from .utils import *
 
 
-class Home(MasterMixin, ListView):
+class Home(ListView):
     model = Visit
     template_name = 'services/index.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        master_context = self.get_master_context()
-        return dict(list(context.items()) + list(master_context.items()))
+        context['master'] = Master.objects.get(pk=1)
+        context['advantages'] = Advantage.objects.all()
+        context['portfolio'] = Visit.objects.filter(completed=True, is_published=True, show_on_main=True, photo_after__contains='jpg')
+        return context
 
 
 class Services(ListView):

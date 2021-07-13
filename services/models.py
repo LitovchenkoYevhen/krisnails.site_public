@@ -73,6 +73,7 @@ class Visit(models.Model):
     photo_after = models.ImageField(upload_to='photos/visits/after/%Y/%m/%d', blank=True, verbose_name='Фото после')
     is_published = models.BooleanField(verbose_name='Показывать в портфолио', default=False)
     tags = models.ManyToManyField('Tag', blank=True, verbose_name='Теги')
+    show_on_main = models.BooleanField(default=False, verbose_name='Показывать на главной странице')
 
     class Meta:
         verbose_name = 'Визит'
