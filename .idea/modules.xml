@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../../../djangoprojects/krisnails/.idea/krisnails.iml" filepath="$PROJECT_DIR$/../../../../../djangoprojects/krisnails/.idea/krisnails.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/krisnails_dir.iml" filepath="$PROJECT_DIR$/.idea/krisnails_dir.iml" />
     </modules>
   </component>

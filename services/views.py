@@ -17,7 +17,7 @@ class Home(ListView):
         context = super().get_context_data(**kwargs)
         context['master'] = Master.objects.get(pk=1)
         context['advantages'] = Advantage.objects.all()
-        context['portfolio'] = Visit.objects.filter(completed=True, is_published=True, show_on_main=True, photo_after__contains='jpg').order_by('-id')
+        context['portfolio'] = Visit.objects.filter(completed=True, is_published=True, show_on_main=True, photo_after__contains='jpg')
         return context
 
 
