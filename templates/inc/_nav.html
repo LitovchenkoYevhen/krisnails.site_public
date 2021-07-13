@@ -64,9 +64,9 @@
                                         </ul>
                                     </li> -->
                                     <li><a href="{% url 'services:portfolio' %}">Портфолио</a></li>
-                                    {% if request.user.is_superuser %}
-                                    <li><a href="/admin"  target="_blank">Панель администратора</a></li>
-                                    {% endif %}
+{#                                    {% if request.user.is_superuser %}#}
+{#                                    <li><a href="/admin"  target="_blank">Панель администратора</a></li>#}
+{#                                    {% endif %}#}
                                     <li><a href="{% url 'services:service' %}">Услуги</a></li>
                                     <li><a href="{% url 'services:about' %}">Обо мне</a></li>
                                     <li><a href="{% url 'services:blog' %}">Блог</a></li>
