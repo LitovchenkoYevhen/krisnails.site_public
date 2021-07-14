@@ -4,7 +4,7 @@ from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from services.models import *
-import phonenumbers
+
 
 from .forms import ContactForm
 from .utils import *
@@ -43,14 +43,9 @@ def send_message(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            try:
-                parsed_telephone = phonenumbers.parse(form.cleaned_data['telephone'], 'UA')
-                formatted_telephone = phonenumbers.format_number(parsed_telephone, phonenumbers.PhoneNumberFormat.NATIONAL)
-                form.cleaned_data['subject'] = formatted_telephone + ' | ' + form.cleaned_data['name'] + ' | ' + form.cleaned_data['email']
-            except TypeError:
-                messages.error('Ошибка ввода')
+            form.cleaned_data['subject'] = form.cleaned_data['telephone'] + ' | ' + form.cleaned_data['name'] + ' | ' + form.cleaned_data['email']
             mail = send_mail(form.cleaned_data['subject'], form.cleaned_data['content'], 'krisnails@ukr.net',
-                             ('litovchenkoyevhen@gmail.com', 'kyeremchuk7@gmail.com'))
+                             ('litovchenkoyevhen@gmail.com',))
             if mail:
                 messages.success(request, 'Письмо отправлено!')
                 return redirect('services:contact')
