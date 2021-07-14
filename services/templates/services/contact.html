@@ -8,19 +8,7 @@
     </div>
     Google Maps End -->
 
-{% if messages %}
-    {% for message in messages %}
-        {% if message.tags == 'error' %}
-            <div class="alert alert-danger" role="alert">
-                {{ message }}
-            </div>
-        {% else %}
-            <div class="alert alert-{{ message.tags }}" role="alert">
-                {{ message }}
-            </div>
-        {% endif %}
-    {% endfor %}
-{% endif %}
+
 
     <!-- Contact Information Area Start -->
     <section class="contact-information-area section-padding-80-0">
