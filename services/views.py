@@ -43,9 +43,12 @@ def send_message(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            parsed_telephone = phonenumbers.parse(form.cleaned_data['telephone'], 'UA')
-            formatted_telephone = phonenumbers.format_number(parsed_telephone, phonenumbers.PhoneNumberFormat.NATIONAL)
-            form.cleaned_data['subject'] = formatted_telephone + ' | ' + form.cleaned_data['name'] + ' | ' + form.cleaned_data['email']
+            try:
+                parsed_telephone = phonenumbers.parse(form.cleaned_data['telephone'], 'UA')
+                formatted_telephone = phonenumbers.format_number(parsed_telephone, phonenumbers.PhoneNumberFormat.NATIONAL)
+                form.cleaned_data['subject'] = formatted_telephone + ' | ' + form.cleaned_data['name'] + ' | ' + form.cleaned_data['email']
+            except:
+                messages.error('Ошибка ввода')
             mail = send_mail(form.cleaned_data['subject'], form.cleaned_data['content'], 'krisnails@ukr.net',
                              ('litovchenkoyevhen@gmail.com', 'kyeremchuk7@gmail.com'))
             if mail:
