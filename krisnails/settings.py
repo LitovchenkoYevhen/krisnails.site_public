@@ -36,8 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',
-    'ckeditor_uploader',
+    #'debug_toolbar',
     'services',
     'blog',
 ]
@@ -163,18 +162,4 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.join(BASE_DIR, 'django_chache'),
     }
-}
-
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-
-
-CKEDITOR_CONFIGS = {
-    'awesome_ckeditor': {
-        'toolbar': 'Basic',
-    },
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': 1300,
-    },
 }

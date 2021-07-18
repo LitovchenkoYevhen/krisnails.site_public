@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from django import forms
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
 from .models import *
 
 
@@ -33,11 +32,11 @@ class VisitAdmin(admin.ModelAdmin):
     save_as = True
 
 
-    fieldsets = (
+    fieldsets = [
         ('Планирование визита', {'fields': ('client', 'visit_date')}),
         ('Дополнительная информация после визита', {'fields': ('info', 'designs', 'completed', 'visit_cancel_reason', 'photo_before', 'photo_after', 'get_photo')}),
         ('Портфолио', {'fields': ('is_published', 'show_on_main', 'tags',)})
-	)
+    ]
 
     def get_photo(self, obj):
         if obj.photo_after:
@@ -62,19 +61,12 @@ class CertificateAdmin(admin.ModelAdmin):
 class QuoteAdmin(admin.ModelAdmin):
     list_display = ('speaker',)
 
-class PostAdminForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorUploadingWidget(config_name='default'))
-    class Meta:
-        model = Post
-        fields = '__all__'
-
 class PostAdmin(admin.ModelAdmin):
-    form = PostAdminForm
     list_display = ('title',)
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('pub_date',)
 
-admin.site.register(Post, PostAdmin)
+
 
 admin.site.register(Design, DesignAdmin)
 admin.site.register(Material, MaterialAdmin)
@@ -87,6 +79,6 @@ admin.site.register(Certificate, CertificateAdmin)
 admin.site.register(Master)
 admin.site.register(Advantage)
 admin.site.register(Quote, QuoteAdmin)
-
+admin.site.register(Post, PostAdmin)
 
 
