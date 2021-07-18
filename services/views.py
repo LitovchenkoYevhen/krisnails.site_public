@@ -65,7 +65,7 @@ class About(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['master'] = Master.objects.get(telephone__contains='0933398818')
-        context['projects_done'] = Visit.objects.filter(is_published=True).aggregate(cnt=Count('completed'))['cnt']
+        context['projects_done'] = Visit.objects.all().aggregate(cnt=Count('completed'))['cnt']
         context['clients'] = Client.objects.aggregate(cnt=Count('name'))['cnt']
         context['quotes'] = Quote.objects.all()
         return context
