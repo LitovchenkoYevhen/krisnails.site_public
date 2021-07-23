@@ -151,7 +151,7 @@ INTERNAL_IPS = ['127.0.0.1', ]
 EMAIL_HOST = 'smtp.ukr.net'
 EMAIL_PORT = 465  # 2565
 EMAIL_HOST_USER = 'krisnails@ukr.net'
-EMAIL_HOST_PASSWORD = 'QyjPagIt6TZTDGEx'
+EMAIL_HOST_PASSWORD = krisnails_mail_password
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
