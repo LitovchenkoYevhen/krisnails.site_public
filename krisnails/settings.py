@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-
+from secret_keys import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b!fx+b(*usvx_w@j7)z@05=yvjw=ft!ym-8q4-^f18b#b1+$t)'
+SECRET_KEY = krisnails_secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -93,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'krisnails_project_db',
         'USER': 'django',
-        'PASSWORD': 'aekohxohwie3',
+        'PASSWORD': krisnails_project_db_password,
         'HOST': 'localhost',
         'PORT': '',
     }
