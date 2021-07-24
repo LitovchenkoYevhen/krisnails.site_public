@@ -4,7 +4,7 @@
 *.pyc
 __pycache__/
 local_settings.py
-db.sqlite3
+#db.sqlite3
 db.sqlite3-journal
 media
 .env
@@ -16,7 +16,7 @@ static/
 django_chache/
 .idea/
 secret_keys.py
-
+krisnails/settings.py
 
 
 

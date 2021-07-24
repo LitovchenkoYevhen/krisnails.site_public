@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = krisnails_secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['80.78.251.42', 'krisnails.site', 'www.krisnails.site', 'localhost']
+ALLOWED_HOSTS = ['80.78.251.42', 'krisnails.site', 'www.krisnails.site', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -36,9 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'debug_toolbar',
     'services',
-    'blog',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'krisnails.urls'
@@ -77,25 +74,10 @@ WSGI_APPLICATION = 'krisnails.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'django_project_db',
-#         'USER': 'django',
-#         'PASSWORD': 'aekohxohwie3',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'krisnails_project_db',
-        'USER': 'django',
-        'PASSWORD': krisnails_project_db_password,
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

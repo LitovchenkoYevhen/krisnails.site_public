@@ -1,28 +1,29 @@
-from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Count
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from services.models import *
+from services import form_for_message, information_about_master
 
-
-from .forms import ContactForm
 from .utils import *
 
 
 class Home(ListView):
+    """Показ главной страницы. Мастер, список преимуществ, портфолио для главной страницы"""
     model = Visit
     template_name = 'services/index.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['master'] = Master.objects.get(pk=1)
+        context = information_about_master.get_master(context)
         context['advantages'] = Advantage.objects.all()
-        context['portfolio'] = Visit.objects.filter(completed=True, is_published=True, show_on_main=True, photo_after__contains='after').order_by('-id')
+        context['portfolio'] = Visit.objects.filter(completed=True, is_published=True, show_on_main=True,
+                                                    photo_after__contains='after').order_by('-id')
         return context
 
 
 class Services(ListView):
+    """Список услуг """
     model = Service
     template_name = 'services/service.html'
 
@@ -34,37 +35,30 @@ class Services(ListView):
 
 
 class Portfolio(ListView):
+    """Портфолио с templatetag 'get_portfolio'  """
     model = Visit
     template_name = 'services/portfolio.html'
 
 
+def show_contacts_and_send_message(request):
+    form = form_for_message.make_form(request)
+    return render(request, f'services/contact.html', {'form': form})
+
 
 def send_message(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.cleaned_data['subject'] = form.cleaned_data['telephone'] + ' | ' + form.cleaned_data['name'] + ' | ' + form.cleaned_data['email']
-            mail = send_mail(form.cleaned_data['subject'], form.cleaned_data['content'], 'krisnails@ukr.net', ('litovchenkoyevhen@gmail.com',))
-            if mail:
-                messages.success(request, 'Письмо отправлено!')
-                return redirect('services:contact')
-            else:
-                messages.error(request, 'Ошибка отправки')
-        else:
-            messages.error(request, 'Ошибка ввода')
-    else:
-        form = ContactForm()
-    path = request.path[1:-1]
-    return render(request, f'services/{path}.html', {'form': form})
+    form = form_for_message.make_form(request)
+    return render(request, f'services/contact_form.html', {'form': form})
+
 
 
 class About(ListView):
+    """Информация о мастере. Страница "Обо мне" """
     model = Master
     template_name = 'services/about.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['master'] = Master.objects.get(telephone__contains='0933398818')
+        context = information_about_master.get_master(context)
         context['projects_done'] = Visit.objects.all().aggregate(cnt=Count('completed'))['cnt']
         context['clients'] = Client.objects.aggregate(cnt=Count('name'))['cnt']
         context['quotes'] = Quote.objects.all()
@@ -93,8 +87,4 @@ class ShowPost(DetailView):
         return context
 
 
-# def show_post(request, slug):
-#     post = Post.objects.get(slug=slug)
-#     post.views = F('views') + 1
-#     post.save()
-#     return render(request, 'services/show_post.html', {'post': post})
+
