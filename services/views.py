@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from services.models import *
 from services import form_for_message, information_about_master
+from django.contrib.auth.decorators import login_required
 
 from .utils import *
 
@@ -39,7 +40,7 @@ class Portfolio(ListView):
     model = Visit
     template_name = 'services/portfolio.html'
 
-
+@login_required(login_url='/admin')                                    # проверка декоратора
 def show_contacts_and_send_message(request):
     form = form_for_message.make_form(request)
     return render(request, f'services/contact.html', {'form': form})
